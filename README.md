@@ -26,3 +26,4 @@ El archivo compilará el código, generará una imagen docker, la subirá a dock
 
 * Una vez compilado, generada las imágenes y levantadas.
 * Dirigirse a la siguiente url en el navegador: http://localhost:8080/swagger-ui/#/. En la misma se puede visualizar un swagger con todos los endpoints a disposición para ser ejecutados.
+Importante: Para utilizar los endpoints securizados, primero se debe hacer un login para obtener el token y luego se debe colocar en la sección de swagger destinado para ello, con el siguiente formato Bearer xxxxxxxxxx
