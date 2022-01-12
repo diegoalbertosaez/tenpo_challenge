@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiParam;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
 import lombok.AllArgsConstructor;
@@ -43,8 +44,8 @@ public class ExecutionHistoryController {
 	@ApiOperation(value = "Permite obtener una página de historial de ejecución")
 	@ApiResponses(value = { @ApiResponse(code = 200, message = "OK", response = PageDTO.class),
 			@ApiResponse(code = 500, message = "Error inesperdado", response = ApplicationError.class) })
-	public ResponseEntity<PageDTO<ExecutionHistoryDTO>> findAllPaginated(@RequestParam Integer pageNumber,
-			@RequestParam Integer size) {
+	public ResponseEntity<PageDTO<ExecutionHistoryDTO>> findAllPaginated(@ApiParam("Número de paǵina (desde 0)") @RequestParam Integer pageNumber,
+			@ApiParam("Tamaño de página") @RequestParam Integer size) {
 		LOGGER.debug("Inicio búsqueda historial de ejecuciones paginado: número de paǵina {}, tamaño {}", pageNumber, size);
 		var page = executionHistoryService.findAllPaginated(pageNumber, size);
 		var pageResponse = new PageDTO<>(executionHistoryDTOMapper.toDTO(page.getElements()), page.getTotalElements(),
